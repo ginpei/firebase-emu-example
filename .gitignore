@@ -3,5 +3,11 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
 # project
 out/

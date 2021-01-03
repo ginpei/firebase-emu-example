@@ -3,7 +3,11 @@
 
 module.exports = {
   extends: "./node_modules/@ginpei/eslintrc/.eslintrc.js",
+  globals: {
+    globalThis: "readonly",
+  },
   rules: {
-    // your rules here
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/extensions": ["error", "always"],
   },
 };
