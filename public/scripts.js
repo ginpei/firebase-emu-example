@@ -1,4 +1,5 @@
 import firebase from "./imports/firebase/app.js";
+import { $ } from "./misc.js";
 
 /**
  * @typedef {{
@@ -14,6 +15,8 @@ main();
 
 async function main() {
   init();
+  initializeAuthUis();
+
   const items = await getItemList();
   renderItemList(items);
 }
@@ -26,15 +29,34 @@ function init() {
     projectId: "x-local-emu",
   });
 
+  initializeAuthUis();
+
   const isEmulating = window.location.hostname === "localhost";
   if (isEmulating) {
     // eslint-disable-next-line no-console
     console.log("[Firebase] Using local emulator");
+
     firebase.firestore().settings({
       host: "localhost:8080",
       ssl: false,
     });
   }
+}
+
+function initializeAuthUis() {
+  const isEmulating = window.location.hostname === "localhost";
+  if (isEmulating) {
+    firebase.auth().useEmulator("http://localhost:9099");
+  }
+
+  const auth = firebase.auth();
+  $("#logIn").onclick = () =>
+    auth.signInWithEmailAndPassword("test@example.com", "123456");
+  $("#logOut").onclick = () => auth.signOut();
+
+  firebase.auth().onAuthStateChanged((user) => {
+    console.log("onAuthStateChanged", user?.email, user);
+  });
 }
 
 async function getItemList() {
@@ -49,7 +71,7 @@ async function getItemList() {
  * @param {Item[]} items
  */
 function renderItemList(items) {
-  const elList = document.querySelector("[data-ref='item-list']");
+  const elList = document.querySelector("#item-list");
   // eslint-disable-next-line no-restricted-syntax
   for (const item of items) {
     const elItem = document.createElement("li");

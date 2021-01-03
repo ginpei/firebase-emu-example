@@ -12,7 +12,34 @@
     <p>
       Firebase Emulator Suite: <a href="http://localhost:4000/">http://localhost:4000/</a>
     </p>
-    <ul data-ref="item-list"></ul>
+    <h2>Authentication</h2>
+    <ol>
+      <li>
+        Prepare an account in <a href="http://localhost:4000/auth">Manage auth</a>
+        <ul>
+          <li>Type: Email authentication</li>
+          <li>Email: test@example.com</li>
+          <li>Password: 123456</li>
+        </ul>
+      </li>
+      <li>Try "Log in" and "Log out" below</li>
+      <li>Check DevTools console</li>
+    </ol>
+    <p>
+      <button id="logIn">Log in</button>
+      <button id="logOut">Log out</button>
+    </p>
+    <p id="loggedInInfo" class="ui-message" hidden></p>
+    <form id="logOutForm" hidden>
+      <fieldset>
+        <legend>Log out</legend>
+        <p>
+          <button>Log out</button>
+        </p>
+      </fieldset>
+    </form>
+    <h2>Firestore</h2>
+    <ul id="item-list"></ul>
   </div>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
