@@ -32,7 +32,6 @@ firebase.functions().useEmulator("localhost", 5001);
 
 ### Firestore
 
-
 ```js
 firebase.firestore().settings({ host: "localhost:8080", ssl: false });
 ```
