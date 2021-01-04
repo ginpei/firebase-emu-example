@@ -16,7 +16,7 @@ $ npm run start
 
 Then open http://localhost:5000/ (if default).
 
-## Connect to emulator
+## Connect to emulator in your code
 
 ### Authentication
 
@@ -34,4 +34,10 @@ firebase.functions().useEmulator("localhost", 5001);
 
 ```js
 firebase.firestore().settings({ host: "localhost:8080", ssl: false });
+```
+
+### Realtime Database
+
+```js
+firebase.database().useEmulator("localhost", 9000);
 ```

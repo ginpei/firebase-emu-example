@@ -6,8 +6,10 @@ yarn-error.log
 # Firebase
 .firebase/*
 !.firebase/.gitkeep
+database-debug.log
 firebase-debug.log
 firestore-debug.log
+pubsub-debug.log
 ui-debug.log
 
 # project
