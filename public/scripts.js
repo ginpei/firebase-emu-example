@@ -15,7 +15,6 @@ main();
 
 async function main() {
   init();
-  initializeAuthUis();
 
   const items = await getItemList();
   renderItemList(items);
