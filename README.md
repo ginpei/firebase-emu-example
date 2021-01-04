@@ -16,17 +16,22 @@ $ npm run start
 
 Then open http://localhost:5000/ (if default).
 
-## Authentication emu
+## Connect to emulator
 
-Find more in `public/scripts.js`.
+### Authentication
 
 ```js
 firebase.auth().useEmulator("http://localhost:9099");
 ```
 
-## Firestore emu
+### Cloud Functions
 
-Find more in `public/scripts.js`.
+```js
+firebase.functions().useEmulator("localhost", 5001);
+```
+
+### Firestore
+
 
 ```js
 firebase.firestore().settings({ host: "localhost:8080", ssl: false });
