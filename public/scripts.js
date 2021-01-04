@@ -47,7 +47,7 @@ function setUpFirestoreUi() {
 
   $("#getItems").onclick = async () => {
     const ssItems = await db.collection("items").get();
-    const items = ssItems.docs.map((v) => v.data());
+    const items = ssItems.docs.map((v) => ({ id: v.id, ...v.data() }));
     // eslint-disable-next-line no-console
     console.log("Get items", items);
   };
