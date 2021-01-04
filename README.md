@@ -24,7 +24,7 @@ Find more in `public/scripts.js`.
 firebase.auth().useEmulator("http://localhost:9099");
 ```
 
-## Authentication emu
+## Firestore emu
 
 Find more in `public/scripts.js`.
 
