@@ -44,7 +44,13 @@
         Prepare some documents (data) in <a href="http://localhost:4000/firestore">Firebase Emulator Suite &gt; Firestore</a> under <code>items</code> collection
       </li>
       <li>Press "Get items" below</li>
-      <li>Check DevTools console</li>
+      <li>
+        Check DevTools console
+        <ul>
+          <li>Make sure matching allow statements are in <code>firestore.rules</code></li>
+          <li>If you modify <code>firestore.rule</code> file, you may have to reload the emu while it says "Change detected, updating rules..."</li>
+        </ul>
+      </li>
     </ol>
     <p>
       <button id="getItems">Get items</button>
