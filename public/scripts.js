@@ -8,6 +8,13 @@ main();
 // ----------------------------------------------------------------
 
 async function main() {
+  initializeFirebase();
+
+  setUpAuthenticationUi();
+  setUpFirestoreUi();
+}
+
+function initializeFirebase() {
   firebase.initializeApp({
     apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     appId: "x-local-emu",
@@ -15,37 +22,33 @@ async function main() {
     projectId: "x-local-emu",
   });
 
-  initializeAuthUis();
-  initializeFirestore();
-}
-
-function initializeAuthUis() {
   const isEmulating = window.location.hostname === "localhost";
   if (isEmulating) {
     firebase.auth().useEmulator("http://localhost:9099");
+    firebase.firestore().settings({ host: "localhost:8080", ssl: false });
   }
+}
 
+function setUpAuthenticationUi() {
   const auth = firebase.auth();
+
   $("#logIn").onclick = () =>
     auth.signInWithEmailAndPassword("test@example.com", "123456");
   $("#logOut").onclick = () => auth.signOut();
 
   firebase.auth().onAuthStateChanged((user) => {
+    // eslint-disable-next-line no-console
     console.log("onAuthStateChanged", user?.email, user);
   });
 }
 
-function initializeFirestore() {
+function setUpFirestoreUi() {
   const db = firebase.firestore();
-
-  const isEmulating = window.location.hostname === "localhost";
-  if (isEmulating) {
-    db.settings({ host: "localhost:8080", ssl: false });
-  }
 
   $("#getItems").onclick = async () => {
     const ssItems = await db.collection("items").get();
     const items = ssItems.docs.map((v) => v.data());
+    // eslint-disable-next-line no-console
     console.log("Get items", items);
   };
 }
