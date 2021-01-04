@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint . && tsc",
-    "start": "firebase emulators:start --import=.firebase --export-on-exit"
+    "start": "firebase --project=x-local-emu emulators:start --import=.firebase --export-on-exit"
   },
   "dependencies": {},
   "devDependencies": {

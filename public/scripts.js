@@ -11,6 +11,7 @@ async function main() {
   initializeFirebase();
 
   setUpAuthenticationUi();
+  setUpFunctionsUi();
   setUpFirestoreUi();
 }
 
@@ -25,6 +26,7 @@ function initializeFirebase() {
   const isEmulating = window.location.hostname === "localhost";
   if (isEmulating) {
     firebase.auth().useEmulator("http://localhost:9099");
+    firebase.functions().useEmulator("localhost", 5001);
     firebase.firestore().settings({ host: "localhost:8080", ssl: false });
   }
 }
@@ -40,6 +42,17 @@ function setUpAuthenticationUi() {
     // eslint-disable-next-line no-console
     console.log("onAuthStateChanged", user?.email, user);
   });
+}
+
+function setUpFunctionsUi() {
+  const functions = firebase.functions();
+  const helloWorld = functions.httpsCallable("helloWorld");
+
+  $("#kickFunction").onclick = async () => {
+    const res = await helloWorld();
+    // eslint-disable-next-line no-console
+    console.log("Kick a function", res);
+  };
 }
 
 function setUpFirestoreUi() {
