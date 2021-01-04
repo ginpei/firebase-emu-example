@@ -1,3 +1,10 @@
+code {
+  background-color: #fff0f0;
+  border-radius: 0.1em;
+  font-family: monospace;
+  padding: 0.1em 0.4em;
+}
+
 .ui-container {
   box-sizing: border-box;
   margin-left: auto;

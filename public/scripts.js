@@ -1,12 +1,6 @@
 import firebase from "./imports/firebase/app.js";
 import { $ } from "./misc.js";
 
-/**
- * @typedef {{
- *   name: string;
- * }} Item
- */
-
 // ----------------------------------------------------------------
 
 main();
@@ -14,13 +8,6 @@ main();
 // ----------------------------------------------------------------
 
 async function main() {
-  init();
-
-  const items = await getItemList();
-  renderItemList(items);
-}
-
-function init() {
   firebase.initializeApp({
     apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     appId: "x-local-emu",
@@ -29,17 +16,7 @@ function init() {
   });
 
   initializeAuthUis();
-
-  const isEmulating = window.location.hostname === "localhost";
-  if (isEmulating) {
-    // eslint-disable-next-line no-console
-    console.log("[Firebase] Using local emulator");
-
-    firebase.firestore().settings({
-      host: "localhost:8080",
-      ssl: false,
-    });
-  }
+  initializeFirestore();
 }
 
 function initializeAuthUis() {
@@ -58,34 +35,17 @@ function initializeAuthUis() {
   });
 }
 
-async function getItemList() {
+function initializeFirestore() {
   const db = firebase.firestore();
 
-  const ssItems = await db.collection("items").get();
-  const items = ssItems.docs.map((v) => createItem(v.data()));
-  return items;
-}
-
-/**
- * @param {Item[]} items
- */
-function renderItemList(items) {
-  const elList = document.querySelector("#item-list");
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of items) {
-    const elItem = document.createElement("li");
-    elItem.textContent = item.name || "(No name)";
-    elList?.appendChild(elItem);
+  const isEmulating = window.location.hostname === "localhost";
+  if (isEmulating) {
+    db.settings({ host: "localhost:8080", ssl: false });
   }
-}
 
-/**
- * @param {Partial<Item>} [initial]
- * @returns {Item}
- */
-function createItem(initial) {
-  return {
-    name: "",
-    ...initial,
+  $("#getItems").onclick = async () => {
+    const ssItems = await db.collection("items").get();
+    const items = ssItems.docs.map((v) => v.data());
+    console.log("Get items", items);
   };
 }
