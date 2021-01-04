@@ -1,5 +1,6 @@
 body {
   line-height: 1.5;
+  margin-bottom: 5rem; /* push down an overlay the auth emu shows */
 }
 
 code {
