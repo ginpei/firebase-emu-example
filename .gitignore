@@ -4,7 +4,8 @@ npm-debug.log
 yarn-error.log
 
 # Firebase
-.firebase/
+.firebase/*
+!.firebase/.gitkeep
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
