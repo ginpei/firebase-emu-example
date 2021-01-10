@@ -27,7 +27,7 @@ function initializeFirebase() {
   if (isEmulating) {
     firebase.auth().useEmulator("http://localhost:9099");
     firebase.functions().useEmulator("localhost", 5001);
-    firebase.firestore().settings({ host: "localhost:8080", ssl: false });
+    firebase.firestore().useEmulator("localhost", 8080);
   }
 }
 
