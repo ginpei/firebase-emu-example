@@ -18,7 +18,6 @@
         <li>
           Prepare an account in <a href="http://localhost:4000/auth">Firebase Emulator Suite &gt; Authentication</a>
           <ul>
-            <li>Type: <code>Email authentication</code></li>
             <li>Email: <code>test@example.com</code></li>
             <li>Password: <code>123456</code></li>
           </ul>
@@ -42,6 +41,10 @@
     </article>
     <article>
       <h2>Functions</h2>
+      <ul>
+        <li>Press "Kick a function</li>
+        <li>Check DevTools console</li>
+      </ul>
       <p>
         <button id="kickFunction">Kick a function</button>
       </p>
@@ -50,15 +53,15 @@
       <h2>Firestore</h2>
       <ol>
         <li>
-          Prepare some documents (data) in <a href="http://localhost:4000/firestore">Firebase Emulator Suite &gt; Firestore</a> under <code>items</code> collection
+          Prepare some documents (data) in <a href="http://localhost:4000/firestore">Firebase Emulator Suite &gt; Firestore</a>
+          <ul>
+            <li>Collection: <code>items</code></li>
+            <li>Document fields: <i>as you wish</i></li>
+          </ul>
         </li>
         <li>Press "Get items" below</li>
         <li>
           Check DevTools console
-          <ul>
-            <li>Make sure matching allow statements are in <code>firestore.rules</code></li>
-            <li>If you modify <code>firestore.rule</code> file, you may have to reload the emu while it says "Change detected, updating rules..."</li>
-          </ul>
         </li>
       </ol>
       <p>
