@@ -41,3 +41,9 @@ firebase.firestore().settings({ host: "localhost:8080", ssl: false });
 ```js
 firebase.database().useEmulator("localhost", 9000);
 ```
+
+## Others
+
+### Project name
+
+You can name your own project, or safely keep using the current `x-local-emu` which Ginpei has taken and won't use.
