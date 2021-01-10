@@ -1,6 +1,19 @@
 body {
   line-height: 1.5;
-  margin-bottom: 5rem; /* push down an overlay the auth emu shows */
+}
+
+article {
+  margin-bottom: 5rem;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 3em;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-size: 2em;
 }
 
 code {
